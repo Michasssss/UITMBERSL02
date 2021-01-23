@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,7 +45,14 @@ namespace UITMBER.Api.DataModels
         public LuggageType LuggageType { get; set; }
 
         public double? DriverRate { get; set; }
+
+        //Ocena klienta przez kierowce
+        [Range(1.0, 5.0)]
         public double? ClientRate { get; set; }
+        public DateTime? ClientRateDate { get; set; }
+
+        [MaxLength(300)]
+        public string? ClientRateInfo { get; set; }
 
         [ForeignKey(nameof(DiscountId))]
         public Discount Discount { get; set; }
